@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function viewDetails() {
+        window.ReactNativeWebView.postMessage("show_details");
+        let ul = document.getElementById("music_album");
+        ul.show();
+        let li = document.createElement("li");
+        li.appendChild(document.createTextNode(`rijwan`));
+        ul.appendChild(li);
+      }
+
+      document.addEventListener(
+        "message",
+        function (event) {
+          console.log("Received post message", event);
+          console.log("event.data", event.data);
+          event.data.map((value) => {
+            let ul = document.getElementById("music_album");
+            let li = document.createElement("li");
+            li.appendChild(document.createTextNode(`${value}`));
+            ul.appendChild(li);
+          });
+        },
+        false
+      );
+
+      function clearDetails() {
+        let ul = document.getElementById("music_album");
+        ul.hide();
+      }
+    </script>
+  </head>
+  <body>
+    <ol id="music_album">
+      <li>Rijwan</li>
+      <li>Rijwan</li>
+      <li>Rijwan</li>
+      <li>Rijwan</li>
+      <li>Rijwan</li>
+    </ol>
+    <button
+      onclick="viewDetails()"
+      style="
+        background-color: #4caf50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      "
+    >
+      View Details
+    </button>
+    <button
+      onclick="clearDetails()"
+      style="
+        background-color: red; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      "
+    >
+      Clear Details
+    </button>
+  </body>
+</html>
