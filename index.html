@@ -19,7 +19,7 @@
           event.data.map((value) => {
             let ul = document.getElementById("music_album");
             let li = document.createElement("li");
-            li.appendChild(document.createTextNode(`${value}`));
+            li.appendChild(document.createTextNode(`${value.title}`));
             ul.appendChild(li);
           });
         },
@@ -33,13 +33,7 @@
     </script>
   </head>
   <body>
-    <ol id="music_album">
-      <li>Rijwan</li>
-      <li>Rijwan</li>
-      <li>Rijwan</li>
-      <li>Rijwan</li>
-      <li>Rijwan</li>
-    </ol>
+    <ol id="music_album"></ol>
     <button
       onclick="viewDetails()"
       style="
